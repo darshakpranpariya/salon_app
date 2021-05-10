@@ -25,3 +25,9 @@ final black16TextStyle = TextStyle(
   color: textColor,
   fontWeight: FontWeight.normal,
 );
+
+final black18TitleTextStyle = TextStyle(
+  fontSize: getFontSize(18),
+  color: textColor,
+  fontWeight: FontWeight.w700,
+);

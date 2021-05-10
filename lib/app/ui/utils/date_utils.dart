@@ -1,208 +1,417 @@
-// class DateUtilities {
-//   String getFormattedDateString(DateTime date, {String formatter}) {
-//     if (formatter == null) {
-//       formatter = kMainSourceFormat;
-//     }
-//     return DateFormat(formatter).format(date);
-//   }
+class DateUtilities {
+  String getDayFromWeekDay(int weekDay) {
+    if (weekDay == 1) {
+      return "Mon";
+    } else if (weekDay == 2) {
+      return "Tue";
+    } else if (weekDay == 3) {
+      return "Wed";
+    } else if (weekDay == 4) {
+      return "Thur";
+    } else if (weekDay == 5) {
+      return "Fri";
+    } else if (weekDay == 6) {
+      return "Sat";
+    } else {
+      return "Sun";
+    }
+  }
 
-//   DateTime getDateFromString(String dateString, {String formatter}) {
-//     if (formatter == null) {
-//       formatter = kMainSourceFormat;
-//     }
-//     return DateFormat(formatter).parse(dateString);
-//   }
+  static const String kMainSourceFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
 
-//   String convertDateToFormatterString(String dateString, {String formatter}) {
-//     return getFormattedDateString(
-//       getDateFromString(dateString, formatter: formatter),
-//       formatter: formatter,
-//     );
-//   }
+  static const kSourceFormat = "yyyy-MM-dd'T'HH:mm:ssZ";
+  static const String dd_mm_yyyy_hh_mm = "dd-MM-yyyy HH:mm";
+  static const String dd_mm_yyyy_hh_mm_a = "dd-MM-yyyy hh:mm a";
+  static const String dd_mm_yyyy_hh_mm_ss_a = "dd/MM/yyyy',' hh:mm a";
+  static const String dd_mm_yyyy_hh_mm_ss_aa = "dd-MM-yyyy' at 'hh:mm a";
+  static const String dd_mm_yyyy_hh_mm_ss = "dd MMM yyyy',' hh:mm a";
+  static const String dd_mm_yyyy_n_mm_ss_a = "dd/MM/yyyy'\n' hh:mm a";
+  static const String dd_mm_yyyy = "dd MMM yyyy";
+  static const String dd_eee = "dd\nEE";
+  static const String mm_yyyy = "MM/yyyy";
+  static const String dd = "d";
+  static const String mmm = "MMM";
+  static const String yyyy = "yyyy";
+  static const String file_name_date = "dd MMM yyyy";
+  static const String dd_mm_yyyy_ = "dd-MM-yyyy";
+  static const String yyyy_mm_dd = "yyyy-MM-dd";
 
-//   String convertServerDateToFormatterString(String dateString,
-//       {String formatter}) {
-//     if (dateString == "" || dateString == null) return "";
-//     DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(
-//             DateTime.parse(dateString).millisecondsSinceEpoch)
-//         .toLocal();
-//     return getFormattedDateString(
-//       getDateFromString(dateTime.toIso8601String(), formatter: kSourceFormat),
-//       formatter: formatter,
-//     );
-//   }
+  static const String ddmmyyyy_ = "dd/MM/yyyy";
+  static const String ddmmyywithdash = "dd-MM-yyyy";
+  static const String hh_mm_ss = "HH:mm:ss";
+  static const String hh_mm_a = "hh:mm a";
+  static const String h_mm_a = "h:mm a";
+  static const String eeee = "EEEE";
+  static const String ee = "EE";
+  static const String eee_dd_mmm_yyyy = "EEEE, dd MMM yyyy";
 
-//   DateTime getStartOfDay(DateTime date) {
-//     return DateTime(date.year, date.month, date.day, 0, 0, 0);
-//   }
+  static const String dd_mmm_yy_h_mm_a = "dd MMM''yy 'at' h:mma";
 
-//   DateTime getEndOfDay(DateTime date) {
-//     return DateTime(date.year, date.month, date.day, 23, 59, 59, 999);
-//   }
+  static const String mmm_yyyy = "MMMM yyyy";
+}
 
-//   String getFormattedDay(DateTime date) {
-//     var dt = getStartOfDay(date);
-//     var currentDate = getStartOfDay(DateTime.now());
+/// Outputs year as four digits
+///
+/// Example:
+///     formatDate(DateTime(1989), [yyyy]);
+///     // => 1989
+const String yyyy = 'yyyy';
 
-//     final diffInDays = currentDate.difference(dt).inDays;
-//     if (diffInDays == 0) {
-//       // current day
-//       return "Today";
-//     } else if (diffInDays == 1) {
-//       // 1 day
-//       return "Yesterday";
-//     } else if (diffInDays >= 2 && diffInDays <= 6) {
-//       // same week
-//       return getFormattedDateString(date, formatter: eeee);
-//     } else {
-//       // more than week
-//       String strDate = getFormattedDateString(date, formatter: eee_dd_mmm_yyyy);
-//       return strDate + " at ";
-//     }
-//   }
+/// Outputs year as two digits
+///
+/// Example:
+///     formatDate(DateTime(1989), [yy]);
+///     // => 89
+const String yy = 'yy';
 
-//   String getNextWeekDay(DateTime date) {
-//     final nextWeekDay = DateTime(date.year, date.month, date.day + 7);
-//     return getDayFromWeekDay(nextWeekDay.weekday);
-//   }
+/// Outputs month as two digits
+///
+/// Example:
+///     formatDate(DateTime(1989, 11), [mm]);
+///     // => 11
+///     formatDate(DateTime(1989, 5), [mm]);
+///     // => 05
+const String mm = 'mm';
 
-//   String getTomorrowDay(DateTime date) {
-//     final tomorrow = DateTime(date.year, date.month, date.day + 1);
-//     return (getDayFromWeekDay(tomorrow.weekday));
-//   }
+/// Outputs month compactly
+///
+/// Example:
+///     formatDate(DateTime(1989, 11), [mm]);
+///     // => 11
+///     formatDate(DateTime(1989, 5), [m]);
+///     // => 5
+const String m = 'm';
 
-//   String getDayFromWeekDay(int weekDay) {
-//     if (weekDay == 1) {
-//       return "Mon";
-//     } else if (weekDay == 2) {
-//       return "Tue";
-//     } else if (weekDay == 3) {
-//       return "Wed";
-//     } else if (weekDay == 4) {
-//       return "Thur";
-//     } else if (weekDay == 5) {
-//       return "Fri";
-//     } else if (weekDay == 6) {
-//       return "Sat";
-//     } else {
-//       return "Sun";
-//     }
-//   }
+/// Outputs month as long name
+///
+/// Example:
+///     formatDate(DateTime(1989, 2), [MM]);
+///     // => february
+const String MM = 'MM';
 
-//   static const String kMainSourceFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+/// Outputs month as short name
+///
+/// Example:
+///     formatDate(DateTime(1989, 2), [M]);
+///     // => feb
+const String M = 'M';
 
-//   static const kSourceFormat = "yyyy-MM-dd'T'HH:mm:ssZ";
-//   static const String dd_mm_yyyy_hh_mm = "dd-MM-yyyy HH:mm";
-//   static const String dd_mm_yyyy_hh_mm_a = "dd-MM-yyyy hh:mm a";
-//   static const String dd_mm_yyyy_hh_mm_ss_a = "dd/MM/yyyy',' hh:mm a";
-//   static const String dd_mm_yyyy_hh_mm_ss_aa = "dd-MM-yyyy' at 'hh:mm a";
-//   static const String dd_mm_yyyy_hh_mm_ss = "dd MMM yyyy',' hh:mm a";
-//   static const String dd_mm_yyyy_n_mm_ss_a = "dd/MM/yyyy'\n' hh:mm a";
-//   static const String dd_mm_yyyy = "dd MMM yyyy";
-//   static const String dd_eee = "dd\nEE";
-//   static const String mm_yyyy = "MM/yyyy";
-//   static const String dd = "d";
-//   static const String mmm = "MMM";
-//   static const String yyyy = "yyyy";
-//   static const String file_name_date = "dd MMM yyyy";
-//   static const String dd_mm_yyyy_ = "dd-MM-yyyy";
-//   static const String yyyy_mm_dd = "yyyy-MM-dd";
+/// Outputs day as two digits
+///
+/// Example:
+///     formatDate(DateTime(1989, 2, 21), [dd]);
+///     // => 21
+///     formatDate(DateTime(1989, 2, 5), [dd]);
+///     // => 05
+const String dd = 'dd';
 
-//   static const String ddmmyyyy_ = "dd/MM/yyyy";
-//   static const String ddmmyywithdash = "dd-MM-yyyy";
-//   static const String hh_mm_ss = "HH:mm:ss";
-//   static const String hh_mm_a = "hh:mm a";
-//   static const String h_mm_a = "h:mm a";
-//   static const String eeee = "EEEE";
-//   static const String ee = "EE";
-//   static const String eee_dd_mmm_yyyy = "EEEE, dd MMM yyyy";
+/// Outputs day compactly
+///
+/// Example:
+///     formatDate(DateTime(1989, 2, 21), [d]);
+///     // => 21
+///     formatDate(DateTime(1989, 2, 5), [d]);
+///     // => 5
+const String d = 'd';
 
-//   static const String dd_mmm_yy_h_mm_a = "dd MMM''yy 'at' h:mma";
+/// Outputs week in month
+///
+/// Example:
+///     formatDate(DateTime(1989, 2, 21), [w]);
+///     // => 4
+const String w = 'w';
 
-//   static const String mmm_yyyy = "MMMM yyyy";
+/// Outputs week in year as two digits
+///
+/// Example:
+///     formatDate(DateTime(1989, 12, 31), [W]);
+///     // => 53
+///     formatDate(DateTime(1989, 2, 21), [W]);
+///     // => 08
+const String WW = 'WW';
 
-// //   Future<DateTime> pickDateDialog(
-// //       BuildContext context,
-// //       ) async {
-// //     return await showRoundedDatePicker(
-// //       initialDate: DateTime.now(),
-// // //      firstDate: DateTime.now().subtract(Duration(days: 1)),
-// //       horizontalPadding: getSize(10),
-// //       verticalPadding: MathUtilities.screenHeight(context) / 10,
-// //       context: context,
-// //       //   theme: ThemeData(primarySwatch: appTheme.whiteColor),
-// //       styleDatePicker: MaterialRoundedDatePickerStyle(
-// //         textStyleDayButton:
-// //         TextStyle(fontSize: getFontSize(25), color: appTheme.colorPrimary),
-// //         textStyleYearButton: TextStyle(
-// //           fontSize: getFontSize(30),
-// //           color: appTheme.whiteColor,
-// //         ),
-// //         textStyleDayHeader: TextStyle(
-// //           fontSize: getFontSize(20),
-// //           color: appTheme.textBlackColor,
-// //         ),
-// //         textStyleCurrentDayOnCalendar: TextStyle(
-// //             fontSize: getFontSize(30),
-// //             color: appTheme.darkBlue,
-// //             fontWeight: FontWeight.w600),
-// //         textStyleDayOnCalendar:
-// //         TextStyle(fontSize: getFontSize(20), color: appTheme.darkBlue),
-// //         textStyleDayOnCalendarSelected: TextStyle(
-// //             fontSize: getFontSize(20),
-// //             color: Colors.white,
-// //             fontWeight: FontWeight.bold),
-// //         textStyleDayOnCalendarDisabled: TextStyle(
-// //             fontSize: getFontSize(20), color: Colors.white.withOpacity(0.1)),
-// //         textStyleMonthYearHeader: TextStyle(
-// //             fontSize: getFontSize(24),
-// //             color: Colors.white,
-// //             fontWeight: FontWeight.w500),
-// //         paddingDatePicker: EdgeInsets.all(0),
-// //         paddingMonthHeader: EdgeInsets.all(getSize(12)),
-// //         // paddingActionBar: EdgeInsets.all(getSize(8)),
-// //         paddingDateYearHeader: EdgeInsets.all(getSize(10)),
-// //         sizeArrow: getSize(40),
-// //         colorArrowNext: Colors.white,
-// //         colorArrowPrevious: Colors.white,
-// //         marginLeftArrowPrevious: getSize(10),
-// //         marginTopArrowPrevious: getSize(0),
-// //         marginTopArrowNext: getSize(0),
-// //         marginRightArrowNext: getSize(10),
-// //         textStyleButtonAction:
-// //         TextStyle(fontSize: getFontSize(18), color: Colors.white),
-// //         textStyleButtonPositive: TextStyle(
-// //             fontSize: getFontSize(18),
-// //             color: appTheme.darkBlue,
-// //             fontWeight: FontWeight.bold),
-// //         textStyleButtonNegative: TextStyle(
-// //             fontSize: getFontSize(18), color: appTheme.darkBlue.withOpacity(0.5)),
-// //         decorationDateSelected:
-// //         BoxDecoration(color: appTheme.colorPrimary, shape: BoxShape.circle),
-// //         backgroundPicker: appTheme.whiteColor,
-// //         backgroundActionBar: appTheme.whiteColor,
-// //         backgroundHeaderMonth: appTheme.colorPrimary.withOpacity(0.5),
-// //       ),
-// //       styleYearPicker: MaterialRoundedYearPickerStyle(
-// //         textStyleYear:
-// //         TextStyle(fontSize: getFontSize(40), color: appTheme.darkBlue),
-// //         textStyleYearSelected: TextStyle(
-// //             fontSize: getFontSize(34),
-// //             color: appTheme.darkBlue,
-// //             fontWeight: FontWeight.bold),
-// //         heightYearRow: getSize(100),
-// //         backgroundPicker: appTheme.whiteColor,
-// //       ),
-// //     );
-// //   }
+/// Outputs week in year compactly
+///
+/// Example:
+///     formatDate(DateTime(1989, 2, 21), [W]);
+///     // => 8
+const String W = 'W';
 
-// //   Future<TimeOfDay> pickTimeDialog(BuildContext context) async {
-// //     return await showRoundedTimePicker(
-// // //      theme: ThemeData(
-// // //          accentColor: appTheme.colorPrimary,
-// // //          primarySwatch: ColorConstants.accentCustomColor),
-// //       context: context,
-// //       initialTime: TimeOfDay.now(),
-// //     );
-// //   }
-// }
+/// Outputs week day as long name
+///
+/// Example:
+///     formatDate(DateTime(2018, 1, 14), [DD]);
+///     // => sunday
+const String DD = 'DD';
+
+/// Outputs week day as long name
+///
+/// Example:
+///     formatDate(DateTime(2018, 1, 14), [D]);
+///     // => sun
+const String D = 'D';
+
+/// Outputs hour (0 - 11) as two digits
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 15), [hh]);
+///     // => 03
+const String hh = 'hh';
+
+/// Outputs hour (0 - 11) compactly
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 15), [h]);
+///     // => 3
+const String h = 'h';
+
+/// Outputs hour (0 to 23) as two digits
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 15), [HH]);
+///     // => 15
+const String HH = 'HH';
+
+/// Outputs hour (0 to 23) compactly
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 5), [H]);
+///     // => 5
+const String H = 'H';
+
+/// Outputs minute as two digits
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 15, 40), [nn]);
+///     // => 40
+///     formatDate(DateTime(1989, 02, 1, 15, 4), [nn]);
+///     // => 04
+const String nn = 'nn';
+
+/// Outputs minute compactly
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 15, 4), [n]);
+///     // => 4
+const String n = 'n';
+
+/// Outputs second as two digits
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10), [ss]);
+///     // => 10
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 5), [ss]);
+///     // => 05
+const String ss = 'ss';
+
+/// Outputs second compactly
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 5), [s]);
+///     // => 5
+const String s = 's';
+
+/// Outputs millisecond as three digits
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 999), [SSS]);
+///     // => 999
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 99), [SS]);
+///     // => 099
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 0), [SS]);
+///     // => 009
+const String SSS = 'SSS';
+
+/// Outputs millisecond compactly
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 999), [SSS]);
+///     // => 999
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 99), [SS]);
+///     // => 99
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 9), [SS]);
+///     // => 9
+const String S = 'S';
+
+/// Outputs microsecond as three digits
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 0, 999), [uuu]);
+///     // => 999
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 0, 99), [uuu]);
+///     // => 099
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 0, 9), [uuu]);
+///     // => 009
+const String uuu = 'uuu';
+
+/// Outputs millisecond compactly
+///
+/// Example:
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 0, 999), [u]);
+///     // => 999
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 0, 99), [u]);
+///     // => 99
+///     formatDate(DateTime(1989, 02, 1, 15, 40, 10, 0, 9), [u]);
+///     // => 9
+const String u = 'u';
+
+/// Outputs if hour is AM or PM
+///
+/// Example:
+///     print(formatDate(DateTime(1989, 02, 1, 5), [am]));
+///     // => AM
+///     print(formatDate(DateTime(1989, 02, 1, 15), [am]));
+///     // => PM
+const String am = 'am';
+
+/// Outputs timezone as time offset
+///
+/// Example:
+///
+const String z = 'z';
+const String Z = 'Z';
+
+String formatDate(DateTime date, List<String> formats) {
+  final sb = StringBuffer();
+
+  for (String format in formats) {
+    if (format == yyyy) {
+      sb.write(_digits(date.year, 4));
+    } else if (format == yy) {
+      sb.write(_digits(date.year % 100, 2));
+    } else if (format == mm) {
+      sb.write(_digits(date.month, 2));
+    } else if (format == m) {
+      sb.write(date.month);
+    } else if (format == MM) {
+      sb.write(monthLong[date.month - 1]);
+    } else if (format == M) {
+      sb.write(monthShort[date.month - 1]);
+    } else if (format == dd) {
+      sb.write(_digits(date.day, 2));
+    } else if (format == d) {
+      sb.write(date.day);
+    } else if (format == w) {
+      sb.write((date.day + 7) ~/ 7);
+    } else if (format == W) {
+      sb.write((dayInYear(date) + 7) ~/ 7);
+    } else if (format == WW) {
+      sb.write(_digits((dayInYear(date) + 7) ~/ 7, 2));
+    } else if (format == DD) {
+      sb.write(dayLong[date.weekday - 1]);
+    } else if (format == D) {
+      sb.write(dayShort[date.weekday - 1]);
+    } else if (format == HH) {
+      sb.write(_digits(date.hour, 2));
+    } else if (format == H) {
+      sb.write(date.hour);
+    } else if (format == hh) {
+      int hour = date.hour % 12;
+      if (hour == 0) hour = 12;
+      sb.write(_digits(hour, 2));
+    } else if (format == h) {
+      int hour = date.hour % 12;
+      if (hour == 0) hour = 12;
+      sb.write(hour);
+    } else if (format == am) {
+      sb.write(date.hour < 12 ? 'AM' : 'PM');
+    } else if (format == nn) {
+      sb.write(_digits(date.minute, 2));
+    } else if (format == n) {
+      sb.write(date.minute);
+    } else if (format == ss) {
+      sb.write(_digits(date.second, 2));
+    } else if (format == s) {
+      sb.write(date.second);
+    } else if (format == SSS) {
+      sb.write(_digits(date.millisecond, 3));
+    } else if (format == S) {
+      sb.write(date.second);
+    } else if (format == uuu) {
+      sb.write(_digits(date.microsecond, 2));
+    } else if (format == u) {
+      sb.write(date.microsecond);
+    } else if (format == z) {
+      if (date.timeZoneOffset.inMinutes == 0) {
+        sb.write('Z');
+      } else {
+        if (date.timeZoneOffset.isNegative) {
+          sb.write('-');
+          sb.write(_digits((-date.timeZoneOffset.inHours) % 24, 2));
+          sb.write(_digits((-date.timeZoneOffset.inMinutes) % 60, 2));
+        } else {
+          sb.write('+');
+          sb.write(_digits(date.timeZoneOffset.inHours % 24, 2));
+          sb.write(_digits(date.timeZoneOffset.inMinutes % 60, 2));
+        }
+      }
+    } else if (format == Z) {
+      sb.write(date.timeZoneName);
+    } else {
+      sb.write(format);
+    }
+  }
+
+  return sb.toString();
+}
+
+String _digits(int value, int length) {
+  String ret = '$value';
+  if (ret.length < length) {
+    ret = '0' * (length - ret.length) + ret;
+  }
+  return ret;
+}
+
+const List<String> monthShort = const <String>[
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+];
+
+const List<String> monthLong = const <String>[
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
+
+const List<String> dayShort = const [
+  'Mon',
+  'Tue',
+  'Wed',
+  'Thur',
+  'Fri',
+  'Sat',
+  'Sun'
+];
+
+const List<String> dayLong = const [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday'
+];
+
+int dayInYear(DateTime date) =>
+    date.difference(DateTime(date.year, 1, 1)).inDays;

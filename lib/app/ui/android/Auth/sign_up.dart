@@ -2,20 +2,21 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:salon_app/app/controller/auth_controller/signin_controller.dart';
+import 'package:salon_app/app/controller/auth_controller/singup_controller.dart';
 import 'package:salon_app/app/routes/app_pages.dart';
-import 'package:salon_app/app/ui/android/Auth/sign_up.dart';
 import 'package:salon_app/app/ui/theme/app_colors.dart';
 import 'package:salon_app/app/ui/theme/app_text_theme.dart';
 import 'package:salon_app/app/ui/utils/app_button.dart';
 import 'package:salon_app/app/ui/utils/common_textfield.dart';
 import 'package:salon_app/app/ui/utils/common_widgets.dart';
+import 'package:salon_app/app/ui/utils/date_utils.dart';
 import 'package:salon_app/app/ui/utils/math_utils.dart';
 import 'package:salon_app/app/ui/utils/validator_utils.dart';
 
-class SignIn extends StatelessWidget {
-  final controller = Get.put<SignInContoller>(SignInContoller());
+class SignUp extends StatelessWidget {
+  final controller = Get.put<SignUpController>(SignUpController());
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  DateTime selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -55,28 +56,30 @@ class SignIn extends StatelessWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "LogIn",
+                              "SignUp",
                               style: black18TitleTextStyle,
                             ),
                           ),
                           SizedBox(
                             height: getSize(30),
                           ),
+                          getNameTextField(),
+                          SizedBox(
+                            height: getSize(20),
+                          ),
                           getEmailTextField(),
                           SizedBox(
-                            height: getSize(30),
+                            height: getSize(20),
                           ),
                           getPasswordTextField(),
                           SizedBox(
                             height: getSize(20),
                           ),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              "Forgot Password ?",
-                              style: black16TextStyle,
-                            ),
+                          getDobTextField(context),
+                          SizedBox(
+                            height: getSize(20),
                           ),
+                          getAddressTextField(),
                           SizedBox(
                             height: getSize(20),
                           ),
@@ -92,10 +95,9 @@ class SignIn extends StatelessWidget {
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
-                                      Get.toNamed(Routes.SIGNUP);
-                                      // Get.to(SignUp());
+                                      Get.toNamed(Routes.SIGNIN);
                                     },
-                                  text: "Sign Up",
+                                  text: "Sign In",
                                   style: black16TextStyle.copyWith(
                                     fontWeight: FontWeight.w400,
                                     color: primaryColor,
@@ -115,19 +117,49 @@ class SignIn extends StatelessWidget {
     );
   }
 
+  Future<void> _selectDate(context) async {
+    selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(DateTime.now().day),
+      lastDate: DateTime(3000),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.dark().copyWith(
+            colorScheme: ColorScheme.dark(
+              primary: primaryColor,
+              onPrimary: Colors.white,
+              surface: primaryColor,
+              onSurface: Colors.black,
+            ),
+            dialogBackgroundColor: bgColor,
+          ),
+          child: child,
+        );
+      },
+    );
+    if (selectedDate != null) {
+      String date = formatDate(
+        selectedDate,
+        [dd, ' ', M, ' ', yyyy],
+      );
+      controller.dobController.text = date;
+    }
+  }
+
   AppButton getLogInButton() {
     return AppButton.flat(
       fitWidth: true,
       onTap: () async {
-        if (controller.formKey.currentState.validate()) {
+        if (formKey.currentState.validate()) {
           controller.loading.value = true;
 
-          controller.loginCall();
+          controller.signUpCall();
         } else {
           controller.autoValidate.value = true;
         }
       },
-      text: "Login",
+      text: "SignUp",
       backgroundColor: primaryColor,
     );
   }
@@ -171,9 +203,9 @@ class SignIn extends StatelessWidget {
           return null;
         }
       },
-      inputAction: TextInputAction.done,
+      inputAction: TextInputAction.next,
       onNextPress: () {
-        SystemChannels.textInput.invokeMethod('TextInput.hide');
+        controller.dobFocusNode.requestFocus();
       },
     );
   }
@@ -183,7 +215,7 @@ class SignIn extends StatelessWidget {
       focusNode: controller.emailFocusNode,
       textOption: TextFieldOption(
         prefixWid: getCommonIconWidget(
-            imageName: "assets/auth/user.png", imageType: IconSizeType.small),
+            imageName: "assets/auth/mail.png", imageType: IconSizeType.small),
         //Image.asset(profileEmail,),
 
         hintText: "Enter Email",
@@ -206,7 +238,7 @@ class SignIn extends StatelessWidget {
           } else {
             controller.isEmailValid.value = true;
           }
-          controller.formKey.currentState.validate();
+          formKey.currentState.validate();
         }
       },
       validation: (text) {
@@ -223,6 +255,149 @@ class SignIn extends StatelessWidget {
       inputAction: TextInputAction.next,
       onNextPress: () {
         controller.passwordFocusNode.requestFocus();
+      },
+    );
+  }
+
+  CommonTextfield getNameTextField() {
+    return CommonTextfield(
+      focusNode: controller.nameFocusNode,
+      textOption: TextFieldOption(
+        prefixWid: getCommonIconWidget(
+            imageName: "assets/auth/user.png", imageType: IconSizeType.small),
+        //Image.asset(profileEmail,),
+
+        hintText: "Enter Username",
+        inputController: controller.nameController,
+        errorBorder: controller.isNameValid.value
+            ? null
+            : OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(11)),
+                borderSide: BorderSide(width: 1, color: Colors.red),
+              ),
+
+        formatter: [],
+      ),
+      textCallback: (text) {
+        if (controller.autoValidate.value) {
+          if (text.isEmpty) {
+            controller.isNameValid.value = false;
+          } else {
+            controller.isNameValid.value = true;
+          }
+          formKey.currentState.validate();
+        }
+      },
+      validation: (text) {
+        if (text.isEmpty) {
+          controller.isNameValid.value = false;
+
+          return "Enter Username";
+        } else {
+          return null;
+        }
+      },
+      inputAction: TextInputAction.next,
+      onNextPress: () {
+        controller.emailFocusNode.requestFocus();
+      },
+    );
+  }
+
+  getDobTextField(context) {
+    return InkWell(
+      onTap: () {
+        _selectDate(context);
+      },
+      child: CommonTextfield(
+        enable: false,
+        focusNode: controller.dobFocusNode,
+        textOption: TextFieldOption(
+          prefixWid: getCommonIconWidget(
+            imageName: "assets/Common/calendar.png",
+            imageType: IconSizeType.small,
+          ),
+          //Image.asset(profileEmail,),
+
+          hintText: "Enter date of birth",
+          inputController: controller.dobController,
+          errorBorder: controller.isDobValid.value
+              ? null
+              : OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(11)),
+                  borderSide: BorderSide(width: 1, color: Colors.red),
+                ),
+
+          formatter: [],
+        ),
+        textCallback: (text) {
+          if (controller.autoValidate.value) {
+            if (text.isEmpty) {
+              controller.isDobValid.value = false;
+            } else {
+              controller.isDobValid.value = true;
+            }
+            formKey.currentState.validate();
+          }
+        },
+        validation: (text) {
+          if (text.isEmpty) {
+            controller.isDobValid.value = false;
+
+            return "Enter date of birth";
+          } else {
+            return null;
+          }
+        },
+        inputAction: TextInputAction.next,
+        onNextPress: () {
+          controller.addressFocusNode.requestFocus();
+        },
+      ),
+    );
+  }
+
+  CommonTextfield getAddressTextField() {
+    return CommonTextfield(
+      focusNode: controller.addressFocusNode,
+      textOption: TextFieldOption(
+        prefixWid: getCommonIconWidget(
+            imageName: "assets/Common/city.png", imageType: IconSizeType.small),
+        //Image.asset(profileEmail,),
+
+        hintText: "Enter Address",
+        inputController: controller.addressController,
+        errorBorder: controller.isAddressValid.value
+            ? null
+            : OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(11)),
+                borderSide: BorderSide(width: 1, color: Colors.red),
+              ),
+
+        formatter: [],
+      ),
+      textCallback: (text) {
+        if (controller.autoValidate.value) {
+          if (text.isEmpty) {
+            controller.isAddressValid.value = false;
+          } else {
+            controller.isAddressValid.value = true;
+          }
+          formKey.currentState.validate();
+        }
+      },
+      validation: (text) {
+        if (text.isEmpty) {
+          controller.isAddressValid.value = false;
+
+          return "Enter your address";
+        } else {
+          return null;
+        }
+      },
+      inputAction: TextInputAction.done,
+      onNextPress: () {
+        SystemChannels.textInput.invokeMethod('TextInput.hide');
       },
     );
   }
