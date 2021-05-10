@@ -12,3 +12,4 @@ final dividerColor = fromHex("#E3E3E3");
 final textGreyColor = fromHex("#555555");
 final textColor = fromHex("#383938");
 final errorColor = fromHex("#FF4D4D");
+final redColor = fromHex("#FF4D4D");

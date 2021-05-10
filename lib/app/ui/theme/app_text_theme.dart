@@ -16,7 +16,7 @@ final grey16HintTextStyle = TextStyle(
 
 final error16TextStyle = TextStyle(
   fontSize: getFontSize(14),
-  color: textGreyColor,
+  color: redColor,
   fontWeight: FontWeight.normal,
 );
 
