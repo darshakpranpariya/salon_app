@@ -7,3 +7,21 @@ final TextStyle commonTextStyle = TextStyle(
   fontSize: getSize(16),
   fontWeight: FontWeight.bold,
 );
+
+final grey16HintTextStyle = TextStyle(
+  fontSize: getFontSize(16),
+  color: textGreyColor,
+  fontWeight: FontWeight.w500,
+);
+
+final error16TextStyle = TextStyle(
+  fontSize: getFontSize(14),
+  color: textGreyColor,
+  fontWeight: FontWeight.normal,
+);
+
+final black16TextStyle = TextStyle(
+  fontSize: getFontSize(16),
+  color: textColor,
+  fontWeight: FontWeight.normal,
+);
