@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:salon_app/app/ui/theme/app_colors.dart';
 
 final ThemeData appThemeData = ThemeData(
-  primaryColor: Colors.purple,
-  accentColor: Colors.purpleAccent,
-  backgroundColor: Colors.lightBlue,
+  primaryColor: primaryColor,
+  accentColor: primaryColor.withOpacity(0.5),
+  backgroundColor: whiteColor,
   splashColor: Colors.purpleAccent,
   highlightColor: Colors.purple,
   fontFamily: 'Georgia',
