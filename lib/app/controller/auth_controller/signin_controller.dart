@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:salon_app/app/ui/android/home/notify/notify.dart';
 
 class SignInContoller extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -23,5 +24,7 @@ class SignInContoller extends GetxController {
   loginCall() {
     print(emailController.text);
     print(passwordController.text);
+
+    Get.to(Notify());
   }
 }

@@ -31,3 +31,9 @@ final black18TitleTextStyle = TextStyle(
   color: textColor,
   fontWeight: FontWeight.w700,
 );
+
+final black28BigLableTextStyle = TextStyle(
+  fontSize: getFontSize(28),
+  color: textColor,
+  fontWeight: FontWeight.bold,
+);
