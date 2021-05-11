@@ -119,7 +119,7 @@ class SignIn extends StatelessWidget {
     return AppButton.flat(
       fitWidth: true,
       onTap: () async {
-        if (controller.formKey.currentState.validate()) {
+        if (formKey.currentState.validate()) {
           controller.loading.value = true;
 
           controller.loginCall();

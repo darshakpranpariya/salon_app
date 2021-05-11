@@ -12,6 +12,14 @@ class SignInContoller extends GetxController {
   RxBool autoValidate = false.obs;
   RxBool loading = false.obs;
 
+  @override
+  void onInit() {
+    // fetchApi();
+    emailController.text = "dp@gmail.com";
+    passwordController.text = "1234567";
+    super.onInit();
+  }
+
   loginCall() {
     print(emailController.text);
     print(passwordController.text);
