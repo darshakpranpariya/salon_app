@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:salon_app/app/controller/auth_controller/signin_controller.dart';
 import 'package:salon_app/app/routes/app_pages.dart';
 import 'package:salon_app/app/ui/android/Auth/sign_up.dart';
+import 'package:salon_app/app/ui/constants/image_constants.dart';
 import 'package:salon_app/app/ui/theme/app_colors.dart';
 import 'package:salon_app/app/ui/theme/app_text_theme.dart';
 import 'package:salon_app/app/ui/utils/app_button.dart';
@@ -31,7 +32,7 @@ class SignIn extends StatelessWidget {
             ),
             color: primaryColor,
             child: Image.asset(
-              "assets/salon_logo_2.png",
+              logo,
             ),
           ),
           Container(
@@ -137,8 +138,8 @@ class SignIn extends StatelessWidget {
       focusNode: controller.passwordFocusNode,
       textOption: TextFieldOption(
         isSecureTextField: true,
-        prefixWid: getCommonIconWidget(
-            imageName: "assets/auth/lock.png", imageType: IconSizeType.small),
+        prefixWid:
+            getCommonIconWidget(imageName: lock, imageType: IconSizeType.small),
         //Image.asset(profileEmail,),
 
         hintText: "Enter Password",
@@ -183,7 +184,7 @@ class SignIn extends StatelessWidget {
       focusNode: controller.emailFocusNode,
       textOption: TextFieldOption(
         prefixWid: getCommonIconWidget(
-            imageName: "assets/auth/user.png", imageType: IconSizeType.small),
+            imageName: userIcon, imageType: IconSizeType.small),
         //Image.asset(profileEmail,),
 
         hintText: "Enter Email",
