@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:salon_app/app/controller/home_controller/bottom_navigation_controller.dart';
 import 'package:salon_app/app/ui/android/home/discover/discover_screen.dart';
+import 'package:salon_app/app/ui/android/home/notify/notify.dart';
 
 import '../../theme/app_colors.dart';
 
@@ -11,7 +12,7 @@ class HomePage extends StatelessWidget {
 
   List<Widget> _children = [
     DiscoverScreen(),
-    DiscoverScreen(),
+    Notify(),
     DiscoverScreen(),
     DiscoverScreen(),
     DiscoverScreen(),

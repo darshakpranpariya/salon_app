@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:salon_app/app/ui/android/home/home_page.dart';
 import 'package:salon_app/app/ui/android/home/notify/notify.dart';
 
 class SignInContoller extends GetxController {
@@ -25,6 +26,6 @@ class SignInContoller extends GetxController {
     print(emailController.text);
     print(passwordController.text);
 
-    Get.to(Notify());
+    Get.to(HomePage());
   }
 }

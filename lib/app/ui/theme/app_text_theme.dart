@@ -20,15 +20,39 @@ final error16TextStyle = TextStyle(
   fontWeight: FontWeight.normal,
 );
 
+final black14TextStyle = TextStyle(
+  fontSize: getFontSize(14),
+  color: textColor,
+  fontWeight: FontWeight.normal,
+);
+
 final black16TextStyle = TextStyle(
   fontSize: getFontSize(16),
   color: textColor,
   fontWeight: FontWeight.normal,
 );
 
+final blackBold16TextStyle = TextStyle(
+  fontSize: getFontSize(16),
+  color: textColor,
+  fontWeight: FontWeight.bold,
+);
+
 final black18TitleTextStyle = TextStyle(
   fontSize: getFontSize(18),
   color: textColor,
+  fontWeight: FontWeight.w700,
+);
+
+final white18TitleTextStyle = TextStyle(
+  fontSize: getFontSize(18),
+  color: whiteColor,
+  fontWeight: FontWeight.w700,
+);
+
+final white20TitleTextStyle = TextStyle(
+  fontSize: getFontSize(20),
+  color: whiteColor,
   fontWeight: FontWeight.w700,
 );
 

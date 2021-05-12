@@ -23,7 +23,7 @@ void main() {
       theme: appThemeData,
       defaultTransition: Transition.fade,
       getPages: AppPages.pages,
-      home: HomePage(),
+      home: SignIn(),
       // locale: Locale('pt', 'BR'),
       // translationsKeys: AppTranslation.translations,
     ),
