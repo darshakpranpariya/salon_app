@@ -3,6 +3,7 @@ import 'package:salon_app/app/ui/utils/hexcolor.dart';
 
 final Color whiteColor = Colors.white;
 final Color blackColor = Colors.black;
+final Color grayFont = Colors.black54;
 final Color primaryColor = Color(0xFFFF7043);
 final shadowColor = Color(0xff7D9EF6).withOpacity(0.1);
 final textfieldTextColor = Colors.black;

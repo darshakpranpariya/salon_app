@@ -5,6 +5,7 @@ import 'package:salon_app/app/ui/theme/app_colors.dart';
 import 'package:salon_app/app/ui/theme/app_text_theme.dart';
 
 import 'math_utils.dart';
+import 'math_utils.dart';
 
 typedef OnValidation(String text);
 
@@ -22,6 +23,7 @@ class CommonTextfield extends StatefulWidget {
   final bool alignment;
   final bool readOnly;
   final OnValidation validation;
+  final double borderRadius;
   TextStyle hintStyleText;
 
   CommonTextfield(
@@ -35,6 +37,7 @@ class CommonTextfield extends StatefulWidget {
       this.alignment,
       this.showUnderLine = true,
       this.enable = true,
+      this.borderRadius = 5,
       this.validation,
       this.autoCorrect = true,
       this.hintStyleText,
@@ -96,15 +99,18 @@ class _CommonTextfieldState extends State<CommonTextfield> {
           errorMaxLines: 3,
 //          fillColor: widget.textOption.fillColor ?? fromHex("#F6F6F6"),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(getSize(5))),
+            borderRadius:
+                BorderRadius.all(Radius.circular(widget.borderRadius)),
             borderSide: BorderSide(color: dividerColor, width: getSize(1)),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(getSize(5))),
+            borderRadius:
+                BorderRadius.all(Radius.circular(widget.borderRadius)),
             borderSide: BorderSide(color: dividerColor, width: getSize(1)),
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(getSize(5))),
+            borderRadius:
+                BorderRadius.all(Radius.circular(widget.borderRadius)),
             borderSide: BorderSide(color: dividerColor, width: getSize(1)),
           ),
 //         errorBorder: widget.textOption.errorBorder ?? OutlineInputBorder(

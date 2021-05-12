@@ -6,6 +6,8 @@ import 'package:salon_app/app/ui/android/Auth/sign_in.dart';
 import 'package:salon_app/app/ui/theme/app_theme.dart';
 import 'package:salon_app/app/ui/utils/math_utils.dart';
 
+import 'app/ui/android/home/home_page.dart';
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
@@ -21,7 +23,7 @@ void main() {
       theme: appThemeData,
       defaultTransition: Transition.fade,
       getPages: AppPages.pages,
-      home: SignIn(),
+      home: HomePage(),
       // locale: Locale('pt', 'BR'),
       // translationsKeys: AppTranslation.translations,
     ),

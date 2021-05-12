@@ -9,8 +9,8 @@ class Notify extends StatelessWidget {
       body: Column(
         children: [
           Row(
-            children: [Image.asset(name)],
-          )
+              // children: [Image.asset(name)],
+              )
         ],
       ),
     );
