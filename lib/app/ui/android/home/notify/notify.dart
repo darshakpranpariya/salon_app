@@ -20,7 +20,7 @@ class Notify extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: ColorConstants.primaryColor,
       body: Column(
         children: [
           Container(
@@ -36,7 +36,7 @@ class Notify extends StatelessWidget {
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color: whiteColor,
+                color: ColorConstants.whiteColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(
                     getSize(25),
@@ -138,7 +138,7 @@ class Notify extends StatelessWidget {
                       Icon(
                         Icons.location_on,
                         size: getSize(18),
-                        color: greyText,
+                        color: ColorConstants.greyText,
                       ),
                       Expanded(
                         child: Text(
@@ -169,7 +169,7 @@ class Notify extends StatelessWidget {
                         ),
                         itemBuilder: (context, _) => Icon(
                           Icons.star,
-                          color: primaryColor,
+                          color: ColorConstants.primaryColor,
                         ),
                         onRatingUpdate: (rating) {
                           print(rating);

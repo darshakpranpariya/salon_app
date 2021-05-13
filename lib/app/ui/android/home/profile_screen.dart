@@ -15,7 +15,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor,
+      backgroundColor: ColorConstants.bgColor,
       body: Padding(
         padding: EdgeInsets.all(getSize(30)),
         child: SingleChildScrollView(
@@ -72,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   // shape: BoxShape.circle,
                   borderRadius: BorderRadius.circular(getSize(60)),
-                  color: primaryColor,
+                  color: ColorConstants.primaryColor,
                   boxShadow: getBoxShadow(),
                 ),
                 child: ClipRRect(
@@ -101,11 +101,11 @@ class ProfileScreen extends StatelessWidget {
                 padding: EdgeInsets.all(getSize(2)),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: primaryColor,
+                  color: ColorConstants.primaryColor,
                 ),
                 child: Icon(
                   Icons.add,
-                  color: whiteColor,
+                  color: ColorConstants.whiteColor,
                 ),
               ),
             ),
@@ -122,7 +122,7 @@ class ProfileScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(
             getSize(25),
           ),
-          color: whiteColor,
+          color: ColorConstants.whiteColor,
           boxShadow: getBoxShadow()),
       child: Column(
         children: [
@@ -144,7 +144,7 @@ class ProfileScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(
             getSize(25),
           ),
-          color: whiteColor,
+          color: ColorConstants.whiteColor,
           boxShadow: getBoxShadow()),
       child: Column(
         children: [
@@ -174,7 +174,7 @@ class ProfileScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(
             getSize(25),
           ),
-          color: whiteColor,
+          color: ColorConstants.whiteColor,
           boxShadow: getBoxShadow()),
       child: Column(
         children: [
@@ -195,7 +195,7 @@ class ProfileScreen extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: primaryColor,
+            color: ColorConstants.primaryColor,
           ),
           SizedBox(
             width: getSize(20),

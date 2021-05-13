@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:salon_app/app/ui/theme/app_colors.dart';
 
 final ThemeData appThemeData = ThemeData(
-  primaryColor: primaryColor,
-  accentColor: primaryColor.withOpacity(0.5),
-  backgroundColor: whiteColor,
+  primaryColor: ColorConstants.primaryColor,
+  accentColor: ColorConstants.primaryColor.withOpacity(0.5),
+  backgroundColor: ColorConstants.whiteColor,
 
   // splashColor: Colors.purpleAccent,
   // highlightColor: Colors.purple,
@@ -15,9 +15,9 @@ final ThemeData appThemeData = ThemeData(
 );
 
 final ThemeData appThemeDatadark = ThemeData(
-  primaryColor: primaryColor,
-  accentColor: primaryColor.withOpacity(0.5),
-  backgroundColor: blackColor,
+  primaryColor: ColorConstants.primaryColor,
+  accentColor: ColorConstants.primaryColor.withOpacity(0.5),
+  backgroundColor: ColorConstants.blackColor,
   brightness: Brightness.dark,
   // splashColor: Colors.purpleAccent,
   // highlightColor: Colors.purple,

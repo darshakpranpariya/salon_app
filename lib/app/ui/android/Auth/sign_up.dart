@@ -31,7 +31,7 @@ class SignUp extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               vertical: getSize(70),
             ),
-            color: primaryColor,
+            color: ColorConstants.primaryColor,
             child: Image.asset(
               logo,
             ),
@@ -44,7 +44,7 @@ class SignUp extends StatelessWidget {
                 topLeft: Radius.circular(25),
                 topRight: Radius.circular(25),
               ),
-              color: bgColor,
+              color: ColorConstants.bgColor,
             ),
             child: Form(
               key: formKey,
@@ -101,7 +101,7 @@ class SignUp extends StatelessWidget {
                                   text: "Sign In",
                                   style: black16TextStyle.copyWith(
                                     fontWeight: FontWeight.w400,
-                                    color: primaryColor,
+                                    color: ColorConstants.primaryColor,
                                   ),
                                 ),
                               ],
@@ -128,12 +128,12 @@ class SignUp extends StatelessWidget {
         return Theme(
           data: ThemeData.dark().copyWith(
             colorScheme: ColorScheme.dark(
-              primary: primaryColor,
+              primary: ColorConstants.primaryColor,
               onPrimary: Colors.white,
-              surface: primaryColor,
+              surface: ColorConstants.primaryColor,
               onSurface: Colors.black,
             ),
-            dialogBackgroundColor: bgColor,
+            dialogBackgroundColor: ColorConstants.bgColor,
           ),
           child: child,
         );
@@ -161,7 +161,7 @@ class SignUp extends StatelessWidget {
         }
       },
       text: "SignUp",
-      backgroundColor: primaryColor,
+      backgroundColor: ColorConstants.primaryColor,
     );
   }
 

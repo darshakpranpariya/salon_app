@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:salon_app/app/routes/app_pages.dart';
 import 'package:salon_app/app/ui/android/Auth/sign_in.dart';
-import 'package:salon_app/app/ui/theme/app_colors.dart';
 import 'package:salon_app/app/ui/theme/app_theme.dart';
 import 'package:salon_app/app/ui/utils/math_utils.dart';
+import 'package:salon_app/app/translations/app_translations.dart';
 
 void main() async {
   await GetStorage.init();
@@ -29,8 +29,8 @@ void main() async {
       defaultTransition: Transition.fade,
       getPages: AppPages.pages,
       home: SignIn(),
-      // locale: Locale('pt', 'BR'),
-      // translationsKeys: AppTranslation.translations,
+      locale: Locale('pt', 'BR'),
+      translationsKeys: AppTranslation.translations,
     ),
   );
 }

@@ -92,7 +92,7 @@ class _CommonTextfieldState extends State<CommonTextfield> {
         keyboardType: widget.textOption.keyboardType ?? TextInputType.text,
         textCapitalization:
             widget.textOption.textCapitalization ?? TextCapitalization.none,
-        cursorColor: primaryColor,
+        cursorColor: ColorConstants.primaryColor,
         inputFormatters: widget.textOption.formatter ?? [],
         decoration: InputDecoration(
           errorStyle: error16TextStyle,
@@ -101,17 +101,20 @@ class _CommonTextfieldState extends State<CommonTextfield> {
           enabledBorder: OutlineInputBorder(
             borderRadius:
                 BorderRadius.all(Radius.circular(widget.borderRadius)),
-            borderSide: BorderSide(color: dividerColor, width: getSize(1)),
+            borderSide: BorderSide(
+                color: ColorConstants.dividerColor, width: getSize(1)),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius:
                 BorderRadius.all(Radius.circular(widget.borderRadius)),
-            borderSide: BorderSide(color: dividerColor, width: getSize(1)),
+            borderSide: BorderSide(
+                color: ColorConstants.dividerColor, width: getSize(1)),
           ),
           border: OutlineInputBorder(
             borderRadius:
                 BorderRadius.all(Radius.circular(widget.borderRadius)),
-            borderSide: BorderSide(color: dividerColor, width: getSize(1)),
+            borderSide: BorderSide(
+                color: ColorConstants.dividerColor, width: getSize(1)),
           ),
 //         errorBorder: widget.textOption.errorBorder ?? OutlineInputBorder(
 //               borderRadius: BorderRadius.all(Radius.circular(11)),
@@ -121,7 +124,7 @@ class _CommonTextfieldState extends State<CommonTextfield> {
           hintStyle: grey16HintTextStyle,
           hintText: widget.textOption.hintText,
           labelStyle: TextStyle(
-            color: textColor,
+            color: ColorConstants.textColor,
             fontSize: getFontSize(16),
           ),
           prefixIcon: widget.textOption.prefixWid,
@@ -131,7 +134,7 @@ class _CommonTextfieldState extends State<CommonTextfield> {
               ? IconButton(
                   icon: Icon(
                     obscureIcon,
-                    color: blackColor,
+                    color: ColorConstants.blackColor,
                     size: getSize(15),
                   ),
                   onPressed: () {

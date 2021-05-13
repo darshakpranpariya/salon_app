@@ -16,8 +16,8 @@ showToast({String msg}) {
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.BOTTOM,
     timeInSecForIosWeb: 1,
-    backgroundColor: blackColor.withOpacity(0.5),
-    textColor: whiteColor,
+    backgroundColor: ColorConstants.toastBgColor,
+    textColor: ColorConstants.whiteColor,
     fontSize: getSize(16),
   );
 }
@@ -54,10 +54,10 @@ void showprofileImageBottomSheet(context, Function getImgFile) {
                   maxWidth: 2080,
                   aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
                   androidUiSettings: AndroidUiSettings(
-                      statusBarColor: primaryColor,
+                      statusBarColor: ColorConstants.primaryColor,
                       backgroundColor: Colors.white,
 //                                              toolbarTitle: 'Crop Image',
-                      toolbarColor: primaryColor,
+                      toolbarColor: ColorConstants.primaryColor,
                       toolbarWidgetColor: Colors.white),
                 );
 //
@@ -66,13 +66,13 @@ void showprofileImageBottomSheet(context, Function getImgFile) {
               },
               icon: Icon(
                 Icons.camera_alt,
-                color: primaryColor,
+                color: ColorConstants.primaryColor,
               ),
               label: Text(
                 'Camera',
                 style: TextStyle(
                   fontFamily: "Segoe",
-                  color: primaryColor,
+                  color: ColorConstants.primaryColor,
                   fontWeight: FontWeight.w500,
                   fontSize: getSize(14),
                 ),
@@ -96,10 +96,10 @@ void showprofileImageBottomSheet(context, Function getImgFile) {
                   maxWidth: 2080,
                   aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
                   androidUiSettings: AndroidUiSettings(
-                      statusBarColor: primaryColor,
+                      statusBarColor: ColorConstants.primaryColor,
                       backgroundColor: Colors.white,
 //                                              toolbarTitle: 'Crop Image',
-                      toolbarColor: primaryColor,
+                      toolbarColor: ColorConstants.primaryColor,
                       toolbarWidgetColor: Colors.white),
                 );
 //
@@ -108,13 +108,13 @@ void showprofileImageBottomSheet(context, Function getImgFile) {
               },
               icon: Icon(
                 Icons.photo_library,
-                color: primaryColor,
+                color: ColorConstants.primaryColor,
               ),
               label: Text(
                 'Gallery',
                 style: TextStyle(
                   fontFamily: "Segoe",
-                  color: primaryColor,
+                  color: ColorConstants.primaryColor,
                   fontWeight: FontWeight.w500,
                   fontSize: getSize(14),
                 ),

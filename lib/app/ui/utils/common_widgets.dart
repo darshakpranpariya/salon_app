@@ -75,7 +75,7 @@ getBackButton(
         },
     icon: Image.asset(
       back,
-      color: isWhite ? whiteColor : blackColor,
+      color: isWhite ? ColorConstants.whiteColor : ColorConstants.blackColor,
       width: width ?? getSize(22),
       height: height ?? getSize(22),
     ),
@@ -102,7 +102,7 @@ getBackButton(
 getBoxShadow() {
   return [
     BoxShadow(
-        color: shadowColor,
+        color: ColorConstants.shadowColor,
         // offset: Offset(5, 5),
         blurRadius: 5,
         spreadRadius: 2)

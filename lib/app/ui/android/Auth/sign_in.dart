@@ -32,7 +32,7 @@ class SignIn extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               vertical: getSize(70),
             ),
-            color: primaryColor,
+            color: ColorConstants.primaryColor,
             child: Image.asset(
               logo,
             ),
@@ -45,7 +45,7 @@ class SignIn extends StatelessWidget {
                 topLeft: Radius.circular(25),
                 topRight: Radius.circular(25),
               ),
-              color: bgColor,
+              color: ColorConstants.bgColor,
             ),
             child: Form(
               key: formKey,
@@ -101,7 +101,7 @@ class SignIn extends StatelessWidget {
                                   text: "Sign Up",
                                   style: black16TextStyle.copyWith(
                                     fontWeight: FontWeight.w400,
-                                    color: primaryColor,
+                                    color: ColorConstants.primaryColor,
                                   ),
                                 ),
                               ],
@@ -137,7 +137,7 @@ class SignIn extends StatelessWidget {
         }
       },
       text: "Login",
-      backgroundColor: primaryColor,
+      backgroundColor: ColorConstants.primaryColor,
     );
   }
 

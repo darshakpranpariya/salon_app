@@ -70,7 +70,8 @@ class NotificationScreen extends StatelessWidget {
                             Text(
                               "Hi Jakson..",
                               style: black16TextStyle.copyWith(
-                                  fontSize: getSize(13), color: greyText),
+                                  fontSize: getSize(13),
+                                  color: ColorConstants.greyText),
                             ),
                           ],
                         ),
@@ -83,11 +84,12 @@ class NotificationScreen extends StatelessWidget {
                         Text(
                           "Just Now",
                           style: black16TextStyle.copyWith(
-                              fontSize: getSize(13), color: greyText),
+                              fontSize: getSize(13),
+                              color: ColorConstants.greyText),
                         ),
                         Icon(
                           Icons.phone_in_talk_outlined,
-                          color: primaryColor,
+                          color: ColorConstants.primaryColor,
                         )
                       ],
                     ),

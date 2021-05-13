@@ -70,7 +70,9 @@ class FirstPageProgressIndicator extends StatelessWidget {
         return DecoratedBox(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: index.isEven ? primaryColor : primaryColor.withOpacity(0.2),
+            color: index.isEven
+                ? ColorConstants.primaryColor
+                : ColorConstants.primaryColor.withOpacity(0.2),
           ),
         );
       },
@@ -85,7 +87,9 @@ class NewPageProgressIndicator extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return DecoratedBox(
           decoration: BoxDecoration(
-            color: index.isEven ? primaryColor : whiteColor,
+            color: index.isEven
+                ? ColorConstants.primaryColor
+                : ColorConstants.whiteColor,
           ),
         );
       },
@@ -100,7 +104,9 @@ class NoItemsFoundIndicator extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return DecoratedBox(
           decoration: BoxDecoration(
-            color: index.isEven ? primaryColor : primaryColor.withOpacity(0.2),
+            color: index.isEven
+                ? ColorConstants.primaryColor
+                : ColorConstants.primaryColor.withOpacity(0.2),
           ),
         );
       },
@@ -115,7 +121,9 @@ class NoMoreItemsIndicator extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return DecoratedBox(
           decoration: BoxDecoration(
-            color: index.isEven ? primaryColor : primaryColor,
+            color: index.isEven
+                ? ColorConstants.primaryColor
+                : ColorConstants.primaryColor,
           ),
         );
       },

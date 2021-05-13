@@ -11,6 +11,7 @@ import 'package:salon_app/app/routes/app_pages.dart';
 // import 'package:salon_app/app/routes/app_routes.dart';
 
 class DiscoverScreen extends StatelessWidget {
+  bool themeBool = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +34,7 @@ class DiscoverScreen extends StatelessWidget {
                           style: black16TextStyle.copyWith(
                             fontSize: getSize(20),
                             fontWeight: FontWeight.bold,
-                            color: primaryColor,
+                            color: ColorConstants.primaryColor,
                           ),
                         ),
                       ],
@@ -43,7 +44,7 @@ class DiscoverScreen extends StatelessWidget {
                     onTap: () => Get.toNamed(Routes.NOTIFICATION),
                     child: Icon(
                       Icons.notifications,
-                      color: primaryColor,
+                      color: ColorConstants.primaryColor,
                     ),
                   )
                 ],
@@ -78,14 +79,20 @@ class DiscoverScreen extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Get.changeTheme(appThemeDatadark);
+                        themeBool = !themeBool;
+                        if (themeBool) {
+                          Get.changeTheme(appThemeData);
+                        } else {
+                          Get.changeTheme(appThemeDatadark);
+                        }
                       },
                       child: Container(
                         margin: EdgeInsets.only(left: getSize(10)),
                         padding: EdgeInsets.symmetric(horizontal: getSize(10)),
                         height: double.infinity,
                         decoration: BoxDecoration(
-                            border: Border.all(color: dividerColor),
+                            border:
+                                Border.all(color: ColorConstants.dividerColor),
                             borderRadius: BorderRadius.circular(10)
                             // image:
                             ),
@@ -107,7 +114,8 @@ class DiscoverScreen extends StatelessWidget {
                   ),
                   Text(
                     "View all",
-                    style: black16TextStyle.copyWith(color: primaryColor),
+                    style: black16TextStyle.copyWith(
+                        color: ColorConstants.primaryColor),
                   )
                 ],
               ),
@@ -161,7 +169,8 @@ class DiscoverScreen extends StatelessWidget {
                                 child: Text(
                                   "Makeup Artist",
                                   style: black16TextStyle.copyWith(
-                                      fontSize: getSize(13), color: greyText),
+                                      fontSize: getSize(13),
+                                      color: ColorConstants.greyText),
                                 ),
                               ),
                               SizedBox(
@@ -185,7 +194,8 @@ class DiscoverScreen extends StatelessWidget {
                   ),
                   Text(
                     "View all",
-                    style: black16TextStyle.copyWith(color: primaryColor),
+                    style: black16TextStyle.copyWith(
+                        color: ColorConstants.primaryColor),
                   )
                 ],
               ),
@@ -237,7 +247,8 @@ class DiscoverScreen extends StatelessWidget {
                               child: Text(
                                 "Makeup Artist",
                                 style: black16TextStyle.copyWith(
-                                    fontSize: getSize(13), color: greyText),
+                                    fontSize: getSize(13),
+                                    color: ColorConstants.greyText),
                               ),
                             ),
                             SizedBox(
@@ -257,7 +268,8 @@ class DiscoverScreen extends StatelessWidget {
                   ),
                   Text(
                     "View all",
-                    style: black16TextStyle.copyWith(color: primaryColor),
+                    style: black16TextStyle.copyWith(
+                        color: ColorConstants.primaryColor),
                   )
                 ],
               ),
@@ -309,7 +321,8 @@ class DiscoverScreen extends StatelessWidget {
                               child: Text(
                                 "Makeup Artist",
                                 style: black16TextStyle.copyWith(
-                                    fontSize: getSize(13), color: greyText),
+                                    fontSize: getSize(13),
+                                    color: ColorConstants.greyText),
                               ),
                             ),
                             SizedBox(
