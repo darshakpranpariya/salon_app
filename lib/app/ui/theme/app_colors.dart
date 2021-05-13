@@ -8,6 +8,7 @@ final Color primaryColor = Color(0xFFFF7043);
 final shadowColor = Color(0xff7D9EF6).withOpacity(0.1);
 final textfieldTextColor = Colors.black;
 final bgColor = Color(0xfffcfbf8);
+final newBgColor = fromHex("#f2f2f2");
 final greyText = Colors.grey;
 final dividerColor = fromHex("#E3E3E3");
 final textGreyColor = fromHex("#555555");

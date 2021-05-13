@@ -1,9 +1,10 @@
+import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:salon_app/app/ui/theme/app_colors.dart';
-import 'package:salon_app/app/ui/theme/app_text_theme.dart';
-import 'package:salon_app/app/ui/theme/app_theme.dart';
 import 'package:salon_app/app/ui/utils/animations.dart';
 import 'package:salon_app/app/ui/utils/app_background.dart';
 import 'package:salon_app/app/ui/utils/app_button.dart';
@@ -13,11 +14,116 @@ showToast({String msg}) {
   Fluttertoast.showToast(
     msg: msg,
     toastLength: Toast.LENGTH_SHORT,
-    gravity: ToastGravity.CENTER,
+    gravity: ToastGravity.BOTTOM,
     timeInSecForIosWeb: 1,
     backgroundColor: blackColor.withOpacity(0.5),
     textColor: whiteColor,
     fontSize: getSize(16),
+  );
+}
+
+void showprofileImageBottomSheet(context, Function getImgFile) {
+  double height = MediaQuery.of(context).size.height;
+  double width = MediaQuery.of(context).size.width;
+
+  showModalBottomSheet(
+    context: context,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.0))),
+    builder: (BuildContext bc) {
+      return Container(
+        height: height * 0.1,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(20.0),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            FlatButton.icon(
+              onPressed: () async {
+                Navigator.pop(context, true);
+                PickedFile file = await ImagePicker().getImage(
+                  source: ImageSource.camera,
+                );
+
+                File cropImage = await ImageCropper.cropImage(
+                  sourcePath: file.path,
+                  maxHeight: 2080,
+                  maxWidth: 2080,
+                  aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
+                  androidUiSettings: AndroidUiSettings(
+                      statusBarColor: primaryColor,
+                      backgroundColor: Colors.white,
+//                                              toolbarTitle: 'Crop Image',
+                      toolbarColor: primaryColor,
+                      toolbarWidgetColor: Colors.white),
+                );
+//
+
+                getImgFile(cropImage);
+              },
+              icon: Icon(
+                Icons.camera_alt,
+                color: primaryColor,
+              ),
+              label: Text(
+                'Camera',
+                style: TextStyle(
+                  fontFamily: "Segoe",
+                  color: primaryColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: getSize(14),
+                ),
+              ),
+            ),
+            FlatButton.icon(
+              onPressed: () async {
+                Navigator.pop(context, true);
+                PickedFile file = await ImagePicker().getImage(
+                  source: ImageSource.camera,
+                );
+                // var image = await ImagePicker.pickImage(
+                //     source: ImageSource.gallery,
+                //     imageQuality: 50,
+                //     maxHeight: 2080,
+                //     maxWidth: 2080);
+
+                File cropImage = await ImageCropper.cropImage(
+                  sourcePath: file.path,
+                  maxHeight: 2080,
+                  maxWidth: 2080,
+                  aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
+                  androidUiSettings: AndroidUiSettings(
+                      statusBarColor: primaryColor,
+                      backgroundColor: Colors.white,
+//                                              toolbarTitle: 'Crop Image',
+                      toolbarColor: primaryColor,
+                      toolbarWidgetColor: Colors.white),
+                );
+//
+
+                getImgFile(cropImage);
+              },
+              icon: Icon(
+                Icons.photo_library,
+                color: primaryColor,
+              ),
+              label: Text(
+                'Gallery',
+                style: TextStyle(
+                  fontFamily: "Segoe",
+                  color: primaryColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: getSize(14),
+                ),
+              ),
+            )
+          ],
+        ),
+      );
+    },
   );
 }
 

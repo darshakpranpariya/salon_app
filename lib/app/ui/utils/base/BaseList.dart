@@ -69,6 +69,7 @@ class FirstPageProgressIndicator extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return DecoratedBox(
           decoration: BoxDecoration(
+            shape: BoxShape.circle,
             color: index.isEven ? primaryColor : primaryColor.withOpacity(0.2),
           ),
         );

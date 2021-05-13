@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:salon_app/app/ui/constants/image_constants.dart';
+import 'package:salon_app/app/ui/theme/app_theme.dart';
 
 import '../../../theme/app_colors.dart';
 import '../../../theme/app_text_theme.dart';
@@ -75,16 +76,21 @@ class DiscoverScreen extends StatelessWidget {
                               hintText: "Find salon specialist", maxLine: 1),
                           textCallback: (value) {}),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(left: getSize(10)),
-                      padding: EdgeInsets.symmetric(horizontal: getSize(10)),
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: dividerColor),
-                          borderRadius: BorderRadius.circular(10)
-                          // image:
-                          ),
-                      child: Icon(Icons.sort),
+                    InkWell(
+                      onTap: () {
+                        Get.changeTheme(appThemeDatadark);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(left: getSize(10)),
+                        padding: EdgeInsets.symmetric(horizontal: getSize(10)),
+                        height: double.infinity,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: dividerColor),
+                            borderRadius: BorderRadius.circular(10)
+                            // image:
+                            ),
+                        child: Icon(Icons.sort),
+                      ),
                     )
                   ],
                 ),

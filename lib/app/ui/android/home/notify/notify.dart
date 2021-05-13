@@ -143,8 +143,7 @@ class Notify extends StatelessWidget {
                       Expanded(
                         child: Text(
                           "301 Dorthy Walks,Chicago,Us.",
-                          style:
-                              black14TextStyle.copyWith(color: Colors.black54),
+                          style: gery14TextStyle,
                         ),
                       )
                     ],
@@ -156,7 +155,7 @@ class Notify extends StatelessWidget {
                     children: [
                       Text(
                         "4.5",
-                        style: black14TextStyle.copyWith(color: Colors.black54),
+                        style: gery14TextStyle,
                       ),
                       RatingBar.builder(
                         itemSize: getSize(16),
@@ -178,7 +177,7 @@ class Notify extends StatelessWidget {
                       ),
                       Text(
                         "7.5 km",
-                        style: black14TextStyle.copyWith(color: Colors.black54),
+                        style: gery14TextStyle,
                       ),
                     ],
                   )

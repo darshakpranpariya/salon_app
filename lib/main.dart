@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:salon_app/app/routes/app_pages.dart';
 import 'package:salon_app/app/ui/android/Auth/sign_in.dart';
+import 'package:salon_app/app/ui/theme/app_colors.dart';
 import 'package:salon_app/app/ui/theme/app_theme.dart';
 import 'package:salon_app/app/ui/utils/math_utils.dart';
 
-import 'app/ui/android/home/home_page.dart';
-
-void main() {
+void main() async {
+  await GetStorage.init();
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -20,7 +21,11 @@ void main() {
       navigatorKey: key,
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.INITIAL,
+      // theme: appThemeData,
+      // darkTheme: appThemeData,
       theme: appThemeData,
+      darkTheme: appThemeDatadark,
+      themeMode: ThemeMode.light,
       defaultTransition: Transition.fade,
       getPages: AppPages.pages,
       home: SignIn(),

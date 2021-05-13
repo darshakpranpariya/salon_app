@@ -98,3 +98,13 @@ getBackButton(
     ),
   );*/
 }
+
+getBoxShadow() {
+  return [
+    BoxShadow(
+        color: shadowColor,
+        // offset: Offset(5, 5),
+        blurRadius: 5,
+        spreadRadius: 2)
+  ];
+}

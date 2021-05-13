@@ -29,6 +29,10 @@ dependencies:
   dio: ^4.0.0
   flutter_spinkit: "^4.1.2"
   flutter_rating_bar: ^4.0.0
+  image_picker:
+  image_cropper:
+  image:
+  get_storage:
 
 
   # The following adds the Cupertino Icons font to your application.

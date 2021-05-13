@@ -26,6 +26,18 @@ final black14TextStyle = TextStyle(
   fontWeight: FontWeight.normal,
 );
 
+final gery14TextStyle = TextStyle(
+  fontSize: getFontSize(14),
+  color: Colors.black54,
+  fontWeight: FontWeight.normal,
+);
+
+final gery16TextStyle = TextStyle(
+  fontSize: getFontSize(16),
+  color: Colors.black54,
+  fontWeight: FontWeight.normal,
+);
+
 final black16TextStyle = TextStyle(
   fontSize: getFontSize(16),
   color: textColor,

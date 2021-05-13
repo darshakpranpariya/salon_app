@@ -5,12 +5,14 @@ import 'package:get/get.dart';
 import 'package:salon_app/app/controller/auth_controller/signin_controller.dart';
 import 'package:salon_app/app/routes/app_pages.dart';
 import 'package:salon_app/app/ui/android/Auth/sign_up.dart';
+import 'package:salon_app/app/ui/android/home/home_page.dart';
 import 'package:salon_app/app/ui/constants/image_constants.dart';
 import 'package:salon_app/app/ui/theme/app_colors.dart';
 import 'package:salon_app/app/ui/theme/app_text_theme.dart';
 import 'package:salon_app/app/ui/utils/app_button.dart';
 import 'package:salon_app/app/ui/utils/common_textfield.dart';
 import 'package:salon_app/app/ui/utils/common_widgets.dart';
+import 'package:salon_app/app/ui/utils/dialogs.dart';
 import 'package:salon_app/app/ui/utils/math_utils.dart';
 import 'package:salon_app/app/ui/utils/validator_utils.dart';
 
@@ -123,7 +125,13 @@ class SignIn extends StatelessWidget {
         if (formKey.currentState.validate()) {
           controller.loading.value = true;
 
-          controller.loginCall();
+          controller.loginCall((value) {
+            if (value) {
+              Get.to(HomePage());
+            } else {
+              showToast(msg: "Login/Password might be wrong!!");
+            }
+          });
         } else {
           controller.autoValidate.value = true;
         }

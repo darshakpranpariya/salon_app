@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'package:meta/meta.dart';
 import 'package:salon_app/app/data/library/api_request.dart';
 import 'package:salon_app/app/data/model/posts_model.dart';
 
