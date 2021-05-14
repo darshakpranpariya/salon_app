@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:salon_app/app/data/model/bottomSheetModel/bottom_sheet_model.dart';
 import 'package:salon_app/app/ui/theme/app_colors.dart';
 import 'package:salon_app/app/ui/utils/animations.dart';
 import 'package:salon_app/app/ui/utils/app_background.dart';
 import 'package:salon_app/app/ui/utils/app_button.dart';
+import 'package:salon_app/app/ui/utils/common_widgets.dart';
 import 'package:salon_app/app/ui/utils/math_utils.dart';
+import 'package:salon_app/app/ui/theme/app_colors.dart';
 
 showToast({String msg}) {
   Fluttertoast.showToast(
@@ -19,6 +22,54 @@ showToast({String msg}) {
     backgroundColor: ColorConstants.toastBgColor,
     textColor: ColorConstants.whiteColor,
     fontSize: getSize(16),
+  );
+}
+
+void commonBottomSheet(
+  context, {
+  @required List<BottomSheetModel> list,
+  @required Function(int index) onClick,
+}) {
+  double height = MediaQuery.of(context).size.height;
+  double width = MediaQuery.of(context).size.width;
+
+  showModalBottomSheet(
+    context: context,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.0))),
+    builder: (BuildContext context) {
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(20.0),
+          ),
+        ),
+        child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: list.length,
+          itemBuilder: (BuildContext context, int index) {
+            return InkWell(
+              onTap: () {
+                onClick(index);
+                Navigator.pop(context, true);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    border: Border(
+                        bottom: BorderSide(color: ColorConstants.errorColor))),
+                padding: EdgeInsets.all(getSize(20)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    getTitleText(context, list[index].title),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      );
+    },
   );
 }
 

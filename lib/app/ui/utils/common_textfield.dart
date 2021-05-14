@@ -181,7 +181,9 @@ class _CommonTextfieldState extends State<CommonTextfield> {
           this.widget.textCallback(text);
         },
         onEditingComplete: () {
-          this.widget.textCallback(widget.textOption.inputController.text);
+          this
+              .widget
+              .textCallback(widget.textOption?.inputController?.text ?? "");
         },
       ),
     );

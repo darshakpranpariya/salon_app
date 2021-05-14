@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:salon_app/app/data/model/bottomSheetModel/bottom_sheet_model.dart';
+import 'package:salon_app/app/translations/string_constant/constants.dart';
 import 'package:salon_app/app/ui/android/Auth/sign_in.dart';
 import 'package:salon_app/app/ui/constants/image_constants.dart';
 import 'package:salon_app/app/ui/theme/app_colors.dart';
@@ -47,6 +49,10 @@ class ProfileScreen extends StatelessWidget {
                 height: getSize(20),
               ),
               getSecondContainer(),
+              SizedBox(
+                height: getSize(20),
+              ),
+              getLanguageTranslationContainer(context),
               SizedBox(
                 height: getSize(20),
               ),
@@ -115,6 +121,35 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
+  Container getLanguageTranslationContainer(context) {
+    return Container(
+      padding: EdgeInsets.all(getSize(20)),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(
+            getSize(25),
+          ),
+          color: ColorConstants.whiteColor,
+          boxShadow: getBoxShadow()),
+      child: Column(
+        children: [
+          getVariousOption(
+              icon: Icons.language,
+              text: ChangeAppLanguage.tr,
+              onClick: () {
+                commonBottomSheet(context, list: controller.list,
+                    onClick: (index) {
+                  if (index == 1) {
+                    Get.updateLocale(Locale('hi', 'IN'));
+                  } else {
+                    Get.updateLocale(Locale('en', 'US'));
+                  }
+                });
+              }),
+        ],
+      ),
+    );
+  }
+
   Container getLogoutContainer() {
     return Container(
       padding: EdgeInsets.all(getSize(20)),
@@ -128,7 +163,7 @@ class ProfileScreen extends StatelessWidget {
         children: [
           getVariousOption(
               icon: Icons.logout,
-              text: "Logout",
+              text: LogOut.tr,
               onClick: () {
                 Get.offAll(SignIn());
               }),
@@ -149,19 +184,19 @@ class ProfileScreen extends StatelessWidget {
       child: Column(
         children: [
           getVariousOption(
-              icon: Icons.notification_important, text: "Notification"),
+              icon: Icons.notification_important, text: NOTIFICATION.tr),
           SizedBox(
             height: getSize(15),
           ),
-          getVariousOption(icon: Icons.share, text: "Invite Friends"),
+          getVariousOption(icon: Icons.share, text: InviteFriends.tr),
           SizedBox(
             height: getSize(15),
           ),
-          getVariousOption(icon: Icons.settings, text: "Setting"),
+          getVariousOption(icon: Icons.settings, text: Setting.tr),
           SizedBox(
             height: getSize(15),
           ),
-          getVariousOption(icon: Icons.room_service, text: "Terms of Services"),
+          getVariousOption(icon: Icons.room_service, text: TermsOfServices.tr),
         ],
       ),
     );
@@ -178,11 +213,11 @@ class ProfileScreen extends StatelessWidget {
           boxShadow: getBoxShadow()),
       child: Column(
         children: [
-          getVariousOption(icon: Icons.payment, text: "Payments Methods"),
+          getVariousOption(icon: Icons.payment, text: PaymentMethods.tr),
           SizedBox(
             height: getSize(15),
           ),
-          getVariousOption(icon: Icons.info, text: "Account Information"),
+          getVariousOption(icon: Icons.info, text: AccountInforamtion.tr),
         ],
       ),
     );

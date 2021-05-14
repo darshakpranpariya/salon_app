@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:salon_app/app/controller/auth_controller/singup_controller.dart';
 import 'package:salon_app/app/routes/app_pages.dart';
+import 'package:salon_app/app/translations/string_constant/constants.dart';
 import 'package:salon_app/app/ui/constants/image_constants.dart';
 import 'package:salon_app/app/ui/theme/app_colors.dart';
 import 'package:salon_app/app/ui/theme/app_text_theme.dart';
@@ -57,7 +58,7 @@ class SignUp extends StatelessWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "SignUp",
+                              SIGNUP.tr,
                               style: black18TitleTextStyle,
                             ),
                           ),
@@ -90,7 +91,7 @@ class SignUp extends StatelessWidget {
                           ),
                           RichText(
                             text: TextSpan(
-                              text: "you dont't have an account! ",
+                              text: YouDontHaveAnAccount.tr,
                               style: black16TextStyle,
                               children: <TextSpan>[
                                 TextSpan(
@@ -98,7 +99,7 @@ class SignUp extends StatelessWidget {
                                     ..onTap = () {
                                       Get.toNamed(Routes.SIGNIN);
                                     },
-                                  text: "Sign In",
+                                  text: SIGNIN.tr,
                                   style: black16TextStyle.copyWith(
                                     fontWeight: FontWeight.w400,
                                     color: ColorConstants.primaryColor,
@@ -160,7 +161,7 @@ class SignUp extends StatelessWidget {
           controller.autoValidate.value = true;
         }
       },
-      text: "SignUp",
+      text: SIGNUP.tr,
       backgroundColor: ColorConstants.primaryColor,
     );
   }
@@ -174,7 +175,7 @@ class SignUp extends StatelessWidget {
             getCommonIconWidget(imageName: lock, imageType: IconSizeType.small),
         //Image.asset(profileEmail,),
 
-        hintText: "Enter Password",
+        hintText: EnterPassword.tr,
         inputController: controller.passwordController,
         errorBorder: controller.isPasswordValid.value
             ? null
@@ -199,7 +200,7 @@ class SignUp extends StatelessWidget {
         if (text.isEmpty) {
           controller.isPasswordValid.value = false;
 
-          return "Enter Password";
+          return EnterPassword.tr;
         } else {
           return null;
         }
@@ -219,7 +220,7 @@ class SignUp extends StatelessWidget {
             getCommonIconWidget(imageName: mail, imageType: IconSizeType.small),
         //Image.asset(profileEmail,),
 
-        hintText: "Enter Email",
+        hintText: EnterEmail.tr,
         inputController: controller.emailController,
         errorBorder: controller.isEmailValid.value
             ? null
@@ -246,9 +247,9 @@ class SignUp extends StatelessWidget {
         if (text.isEmpty) {
           controller.isEmailValid.value = false;
 
-          return "Enter Email";
+          return EnterEmail.tr;
         } else if (!ValidationUtils.validateEmail(text)) {
-          return "Enter valid email";
+          return EnterValidEmail.tr;
         } else {
           return null;
         }
@@ -268,7 +269,7 @@ class SignUp extends StatelessWidget {
             imageName: userIcon, imageType: IconSizeType.small),
         //Image.asset(profileEmail,),
 
-        hintText: "Enter Username",
+        hintText: EnterUserName.tr,
         inputController: controller.nameController,
         errorBorder: controller.isNameValid.value
             ? null
@@ -293,7 +294,7 @@ class SignUp extends StatelessWidget {
         if (text.isEmpty) {
           controller.isNameValid.value = false;
 
-          return "Enter Username";
+          return EnterUserName.tr;
         } else {
           return null;
         }
@@ -320,7 +321,7 @@ class SignUp extends StatelessWidget {
           ),
           //Image.asset(profileEmail,),
 
-          hintText: "Enter date of birth",
+          hintText: EnterDateOfBirth.tr,
           inputController: controller.dobController,
           errorBorder: controller.isDobValid.value
               ? null
@@ -345,7 +346,7 @@ class SignUp extends StatelessWidget {
           if (text.isEmpty) {
             controller.isDobValid.value = false;
 
-            return "Enter date of birth";
+            return EnterDateOfBirth.tr;
           } else {
             return null;
           }
@@ -366,7 +367,7 @@ class SignUp extends StatelessWidget {
             imageName: address, imageType: IconSizeType.small),
         //Image.asset(profileEmail,),
 
-        hintText: "Enter Address",
+        hintText: EnterAddress.tr,
         inputController: controller.addressController,
         errorBorder: controller.isAddressValid.value
             ? null
@@ -391,7 +392,7 @@ class SignUp extends StatelessWidget {
         if (text.isEmpty) {
           controller.isAddressValid.value = false;
 
-          return "Enter your address";
+          return EnterAddress.tr;
         } else {
           return null;
         }

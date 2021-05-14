@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:salon_app/app/controller/auth_controller/signin_controller.dart';
 import 'package:salon_app/app/routes/app_pages.dart';
+import 'package:salon_app/app/translations/string_constant/constants.dart';
 import 'package:salon_app/app/ui/android/Auth/sign_up.dart';
 import 'package:salon_app/app/ui/android/home/home_page.dart';
 import 'package:salon_app/app/ui/constants/image_constants.dart';
@@ -58,7 +59,7 @@ class SignIn extends StatelessWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "LogIn",
+                              LogIn.tr,
                               style: black18TitleTextStyle,
                             ),
                           ),
@@ -76,7 +77,7 @@ class SignIn extends StatelessWidget {
                           Align(
                             alignment: Alignment.centerRight,
                             child: Text(
-                              "Forgot Password ?",
+                              ForgotPassword.tr,
                               style: black16TextStyle,
                             ),
                           ),
@@ -89,7 +90,7 @@ class SignIn extends StatelessWidget {
                           ),
                           RichText(
                             text: TextSpan(
-                              text: "you dont't have an account! ",
+                              text: YouDontHaveAnAccount.tr,
                               style: black16TextStyle,
                               children: <TextSpan>[
                                 TextSpan(
@@ -98,7 +99,7 @@ class SignIn extends StatelessWidget {
                                       Get.toNamed(Routes.SIGNUP);
                                       // Get.to(SignUp());
                                     },
-                                  text: "Sign Up",
+                                  text: SIGNUP.tr,
                                   style: black16TextStyle.copyWith(
                                     fontWeight: FontWeight.w400,
                                     color: ColorConstants.primaryColor,
@@ -129,14 +130,14 @@ class SignIn extends StatelessWidget {
             if (value) {
               Get.to(HomePage());
             } else {
-              showToast(msg: "Login/Password might be wrong!!");
+              showToast(msg: LOGINPASSWORDMIGHTBEWRONG.tr);
             }
           });
         } else {
           controller.autoValidate.value = true;
         }
       },
-      text: "Login",
+      text: LogIn.tr,
       backgroundColor: ColorConstants.primaryColor,
     );
   }
@@ -150,7 +151,7 @@ class SignIn extends StatelessWidget {
             getCommonIconWidget(imageName: lock, imageType: IconSizeType.small),
         //Image.asset(profileEmail,),
 
-        hintText: "Enter Password",
+        hintText: EnterPassword.tr,
         inputController: controller.passwordController,
         errorBorder: controller.isPasswordValid.value
             ? null
@@ -175,7 +176,7 @@ class SignIn extends StatelessWidget {
         if (text.isEmpty) {
           controller.isPasswordValid.value = false;
 
-          return "Enter Password";
+          return EnterPassword.tr;
         } else {
           return null;
         }
@@ -195,7 +196,7 @@ class SignIn extends StatelessWidget {
             imageName: userIcon, imageType: IconSizeType.small),
         //Image.asset(profileEmail,),
 
-        hintText: "Enter Email",
+        hintText: EnterEmail.tr,
         inputController: controller.emailController,
         errorBorder: controller.isEmailValid.value
             ? null
@@ -222,9 +223,9 @@ class SignIn extends StatelessWidget {
         if (text.isEmpty) {
           controller.isEmailValid.value = false;
 
-          return "Enter Email";
+          return EnterEmail.tr;
         } else if (!ValidationUtils.validateEmail(text)) {
-          return "Enter valid email";
+          return EnterValidEmail.tr;
         } else {
           return null;
         }

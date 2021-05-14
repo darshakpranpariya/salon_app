@@ -29,7 +29,7 @@ void main() async {
       defaultTransition: Transition.fade,
       getPages: AppPages.pages,
       home: SignIn(),
-      locale: Locale('pt', 'BR'),
+      locale: Locale('en', 'US'),
       translationsKeys: AppTranslation.translations,
     ),
   );
